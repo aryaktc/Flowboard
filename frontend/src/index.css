@@ -1,0 +1,221 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #020617;
+  --color-navy-900: #0F172A;
+  --color-navy-800: #1E293B;
+  --color-navy-700: #334155;
+  --color-navy-600: #475569;
+  --color-navy-500: #64748B;
+  --color-navy-400: #94A3B8;
+  --color-navy-300: #CBD5E1;
+  --color-navy-200: #E2E8F0;
+  --color-navy-100: #F1F5F9;
+
+  --color-indigo-500: #6366F1;
+  --color-indigo-600: #4F46E5;
+  --color-indigo-400: #818CF8;
+
+  --color-cyan-400: #22D3EE;
+  --color-cyan-500: #06B6D4;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Base Styles ────────────────────────────────────────────────────── */
+html,
+body {
+  background-color: var(--color-navy-900);
+  color: var(--color-navy-100);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ── Custom Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-navy-950);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy-700);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-navy-600);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-navy-700) var(--color-navy-950);
+}
+
+/* ── Glassmorphism ──────────────────────────────────────────────────── */
+.glass {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.glass-hover:hover {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(148, 163, 184, 0.18);
+}
+
+.glass-light {
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+/* ── Skeleton Animation ─────────────────────────────────────────────── */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-navy-800) 25%,
+    var(--color-navy-700) 50%,
+    var(--color-navy-800) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.8s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* ── Fade In Animation ──────────────────────────────────────────────── */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+/* ── Slide In Right ─────────────────────────────────────────────────── */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Scale In ───────────────────────────────────────────────────────── */
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Pulse Glow ─────────────────────────────────────────────────────── */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(99, 102, 241, 0);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ── Interactive Element Defaults ───────────────────────────────────── */
+button,
+a,
+input,
+select,
+textarea,
+[role="button"] {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--color-indigo-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Focus Ring Utility ─────────────────────────────────────────────── */
+.focus-ring {
+  outline: none;
+}
+
+.focus-ring:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-navy-900), 0 0 0 4px var(--color-indigo-500);
+}
+
+/* ── Selection ──────────────────────────────────────────────────────── */
+::selection {
+  background-color: rgba(99, 102, 241, 0.3);
+  color: var(--color-navy-100);
+}
+
+/* ── Gradient Utilities ─────────────────────────────────────────────── */
+.gradient-indigo {
+  background: linear-gradient(135deg, var(--color-indigo-500), var(--color-indigo-600));
+}
+
+.gradient-indigo-cyan {
+  background: linear-gradient(135deg, var(--color-indigo-500), var(--color-cyan-400));
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-indigo-400), var(--color-cyan-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
