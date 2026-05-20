@@ -6,12 +6,8 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "dev": "node src/index.js",
     "start": "node src/index.js",
-    "db:migrate": "npx prisma migrate dev",
-    "db:generate": "npx prisma generate",
-    "db:push": "npx prisma db push",
-    "db:seed": "node prisma/seed.js"
+    "build": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^6.9.0",

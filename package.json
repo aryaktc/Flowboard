@@ -6,8 +6,8 @@
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm run dev",
     "dev": "npm run dev:backend & npm run dev:frontend",
-    "build": "cd frontend && npm install --include=dev && npm run build && cd ../backend && npm install && npx prisma generate",
-    "start": "cd backend && npx prisma migrate deploy && node src/index.js",
+    "build": "cd frontend && npm install --include=dev && npm run build && cd ../backend && npm install && npx prisma generate && npx prisma db push",
+    "start": "cd backend && node src/index.js",
     "postinstall": "cd backend && npm install && cd ../frontend && npm install"
   },
   "keywords": ["task-manager", "kanban", "project-management", "flowboard"],

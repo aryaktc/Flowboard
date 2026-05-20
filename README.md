@@ -158,7 +158,7 @@ PORT=3000
 **5. Run database migrations**
 
 ```bash
-cd backend && npx prisma migrate dev
+cd backend && npx prisma db push
 ```
 
 **6. Start development servers**
