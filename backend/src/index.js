@@ -39,10 +39,6 @@ app.get("/api/health", (req, res) => {
 if (process.env.NODE_ENV === "production") {
   const frontendPath = join(__dirname, "../../frontend/dist");
   app.use(express.static(frontendPath));
-
-  app.get("/*splat", (req, res) => {
-    res.sendFile(join(frontendPath, "index.html"));
-  });
 }
 
 // 404 Handler
