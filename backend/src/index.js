@@ -40,10 +40,18 @@ if (process.env.NODE_ENV === "production") {
   const frontendPath = join(__dirname, "../../frontend/dist");
   app.use(express.static(frontendPath));
 
-  app.get("*", (req, res) => {
+  app.get("/*splat", (req, res) => {
     res.sendFile(join(frontendPath, "index.html"));
   });
 }
+
+// 404 Handler
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "Route not found"
+  });
+});
 
 // Global error handler
 app.use((err, req, res, _next) => {
